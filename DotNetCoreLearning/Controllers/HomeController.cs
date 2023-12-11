@@ -42,5 +42,11 @@ public class HomeController : Controller
         return Content(_environment.WebRootPath);
     }
 
+    public ViewResult WishUser()
+    {
+        ViewBag.Message = "Hello";
+        return View("Index");
+    }
+
 }
 
