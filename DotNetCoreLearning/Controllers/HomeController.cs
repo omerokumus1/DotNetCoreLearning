@@ -48,15 +48,25 @@ public class HomeController : Controller
         return View("Index");
     }
 
-    public RedirectResult GotoURL()
+    public RedirectResult GotoURL(string url)
     {
-        return Redirect("https://www.google.com");
+        if (url == null)
+            return Redirect("https://www.google.com");
+        return Redirect(url);
     }
 
 
     public RedirectResult GotoURLPermanently()
     {
         return RedirectPermanent("https://www.google.com");
+    }
+
+    public RedirectToActionResult GotoContactsAction()
+    {
+        // Say for some reason, you want to redirect to WishUser
+        return RedirectToAction("WishUser",
+            new { url = "https://www.wikipedia.com" }
+            );
     }
 
 
