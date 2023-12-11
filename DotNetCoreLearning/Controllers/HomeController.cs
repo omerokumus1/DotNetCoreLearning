@@ -8,9 +8,12 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    private readonly IWebHostEnvironment _environment;
+
+    public HomeController(ILogger<HomeController> logger, IWebHostEnvironment environment)
     {
         _logger = logger;
+        _environment = environment;
     }
 
     public IActionResult Index()
@@ -28,5 +31,16 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+
+    public ContentResult GreetUser()
+    {
+        //return Content("Hello!");
+        //return Content("<div><b>Hello</b></div>", "text/html");
+        //return Content("<div><b>Hello</b></div>", "text/xml");
+        //return Content(_environment.ContentRootPath);
+        return Content(_environment.WebRootPath);
+    }
+
 }
 
