@@ -69,6 +69,20 @@ public class HomeController : Controller
             );
     }
 
+    // RedirectToRoute
+
+    // FileResult
+    public FileResult DownloadFile()
+    {
+        return File("/css/site.css", "text/plain", "newsite.css");
+    }
+
+    public FileResult DownloadLogo()
+    {
+        return File("./Images/logo.png", "images/png");
+    }
+
+
 
 }
 
