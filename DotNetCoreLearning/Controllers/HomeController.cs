@@ -83,6 +83,11 @@ public class HomeController : Controller
     }
 
 
+    public FileContentResult ShowFile()
+    {
+        var file = System.IO.File.ReadAllBytes("./wwwroot/css/site.css");
+        return new FileContentResult(file, "text/plain");
+    }
 
 }
 
