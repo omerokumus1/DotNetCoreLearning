@@ -48,5 +48,17 @@ public class HomeController : Controller
         return View("Index");
     }
 
+    public RedirectResult GotoURL()
+    {
+        return Redirect("https://www.google.com");
+    }
+
+
+    public RedirectResult GotoURLPermanently()
+    {
+        return RedirectPermanent("https://www.google.com");
+    }
+
+
 }
 
