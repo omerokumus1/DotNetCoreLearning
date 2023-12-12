@@ -112,5 +112,32 @@ public class HomeController : Controller
         return NoContent();
     }
 
+
+    public BadRequestResult BadRequestResultDemo()
+    {
+        // Status code: 400
+
+        //return new BadRequestResult();
+        return BadRequest();
+    }
+
+    public BadRequestObjectResult BadRequestObjectResultDemo()
+    {
+        return BadRequest(
+            new ResponseError()
+            {
+                ErrorCode = 404,
+                Message = "Error occurred!"
+            });
+    }
+
+
+    public StatusCodeResult StatusCodeResultDemo()
+    {
+        return new StatusCodeResult(StatusCodes.Status200OK);
+    }
+
+
+
 }
 
