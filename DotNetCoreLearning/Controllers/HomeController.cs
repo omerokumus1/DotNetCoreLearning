@@ -100,5 +100,17 @@ public class HomeController : Controller
         return Json(prod);
     }
 
+    public EmptyResult EmptyResultDemo()
+    {
+        // Reponse/status code: 200
+        return new EmptyResult();
+    }
+
+    public NoContentResult NoContentResultDemo()
+    {
+        // Reponse/status code: 204
+        return NoContent();
+    }
+
 }
 
