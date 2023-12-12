@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DotNetCoreMVCLearning.Models;
 
-namespace DotNetCoreLearning.Controllers;
+namespace DotNetCoreMVCLearning.Controllers;
 
 public class HomeController : Controller
 {

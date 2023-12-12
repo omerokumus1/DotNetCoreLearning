@@ -1,4 +1,4 @@
-﻿namespace DotNetCoreLearning.Models;
+﻿namespace DotNetCoreMVCLearning.Models;
 
 public class ErrorViewModel
 {
