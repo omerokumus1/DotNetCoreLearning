@@ -138,6 +138,19 @@ public class HomeController : Controller
     }
 
 
+    public UnauthorizedResult UnauthorizedResultDemo()
+    {
+        return Unauthorized();
+    }
+
+    public UnauthorizedObjectResult UnauthorizedObjectResultDemo()
+    {
+        return Unauthorized(new ResponseError()
+        {
+            ErrorCode = 404,
+            Message = "Unauthorized!"
+        });
+    }
 
 }
 
