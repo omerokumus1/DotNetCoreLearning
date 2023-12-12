@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using DotNetCoreLearning.Models;
+using DotNetCoreMVCLearning.Models;
 
 namespace DotNetCoreLearning.Controllers;
 
@@ -87,6 +87,17 @@ public class HomeController : Controller
     {
         var file = System.IO.File.ReadAllBytes("./wwwroot/css/site.css");
         return new FileContentResult(file, "text/plain");
+    }
+
+    public JsonResult ShowNewProducts()
+    {
+        Products prod = new()
+        {
+            ProductCode = 101,
+            ProductName = "Printer",
+            Cost = 1500
+        };
+        return Json(prod);
     }
 
 }
