@@ -6,20 +6,37 @@ namespace DotNetCoreLearning.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger,
+        IHttpContextAccessor httpContextAccessor)
     {
         _logger = logger;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public IActionResult Index()
     {
-        if (TempData["Country"] != null)
-        {
-            TempData["Country"] = "Turkey";
-        }
-        
+        CookieOptions options = new();
+        options.Expires = DateTime.Now.AddMinutes(5);
+        _httpContextAccessor.HttpContext
+            .Response
+            .Cookies
+            .Append("username", "omerokumus", options);
+
+        _httpContextAccessor.HttpContext
+            .Response
+            .Cookies
+            .Delete("username");
+
+
+
+        //if (TempData["Country"] != null)
+        //{
+        //    TempData["Country"] = "Turkey";
+        //}
+
         return View();
     }
 
