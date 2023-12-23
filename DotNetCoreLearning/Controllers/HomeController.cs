@@ -15,6 +15,11 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        if (TempData["Country"] != null)
+        {
+            TempData["Country"] = "Turkey";
+        }
+        
         return View();
     }
 
