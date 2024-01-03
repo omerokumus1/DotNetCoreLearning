@@ -1,8 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
 
-<h2>Cookie Data:
-    @HttpContextAccessor.HttpContext.Request.Cookies["username"]</h2>
+<h2>
+    Cookie Data:
+    @HttpContextAccessor.HttpContext.Request.Cookies["username"]
+</h2>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -31,6 +33,16 @@
     TempData.Keep("Country");
 }
 
+
+<h1>x
+    Reading session data:
+    @HttpContextAccessor.HttpContext.Session.GetString("Username")
+</h1>
+
+<h1>
+    Session id:
+    @HttpContextAccessor.HttpContext.Session.Id
+</h1>
 
 
 

@@ -18,19 +18,25 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        CookieOptions options = new();
-        options.Expires = DateTime.Now.AddMinutes(5);
-        _httpContextAccessor.HttpContext
-            .Response
-            .Cookies
-            .Append("username", "omerokumus", options);
+        //CookieOptions options = new();
+        //options.Expires = DateTime.Now.AddMinutes(5);
+        //_httpContextAccessor.HttpContext
+        //    .Response
+        //    .Cookies
+        //    .Append("username", "omerokumus", options);
 
-        _httpContextAccessor.HttpContext
-            .Response
-            .Cookies
-            .Delete("username");
+        //_httpContextAccessor.HttpContext
+        //    .Response
+        //    .Cookies
+        //    .Delete("username");
 
+        _httpContextAccessor.
+            HttpContext
+            .Session
+            .SetString("Username", "omerokumus");
 
+        ViewBag.SessionId =
+            _httpContextAccessor.HttpContext.Session.Id;
 
         //if (TempData["Country"] != null)
         //{

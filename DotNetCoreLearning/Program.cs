@@ -3,12 +3,22 @@
 // Add services to the container.
 builder.Services
     .AddControllersWithViews()
-    .AddSessionStateTempDataProvider();
+    //.AddSessionStateTempDataProvider()
+    ;
 
-builder.Services.AddSession();
+// builder.Services.AddSession();
 
 builder.Services
     .AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services
+    .AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.IsEssential = true;
+});
 
 
 var app = builder.Build();
@@ -24,11 +34,11 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
