@@ -59,6 +59,12 @@ public class HomeController : Controller
         return View(products);
     }
 
+    public IActionResult Details(int id)
+    {
+        var prod = products.Find(prod => prod.ProductID == id);
+        return View(prod);
+    }
+
     public IActionResult Privacy()
     {
         return View();
