@@ -1,4 +1,8 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ss>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("ss") ?? throw new InvalidOperationException("Connection string 'ss' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
