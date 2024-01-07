@@ -65,6 +65,28 @@ public class HomeController : Controller
         return View(prod);
     }
 
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var prod = products.Find(prod => prod.ProductID == id);
+        return View(prod);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Product product)
+    {
+        var index = products.FindIndex(prod => prod.ProductID == product.ProductID);
+        products.RemoveAt(index);
+        products.Insert(index, product);
+        return View(product);
+    }
+
+
+
+
+
+
+
     public IActionResult Privacy()
     {
         return View();
